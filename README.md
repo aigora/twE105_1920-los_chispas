@@ -1,4 +1,4 @@
-# GAMEBOYS
+# GAMEBOYS 
 La GameBoys, consistirá en una serie de juegos que emulen los famosos juegos de la icónica consola de Nintendo. Entre ellos pretendemos programar una versión muy simplificada del Pokemon, reduciendolo a una mecánica que mezcle las bases del juego y reglas del piedra, papel o tijeras. En el trabajo dicho juego será la parte principal, pero se añadirán un par de minijuegos basados en la misma temática para completar el proyecto.
 
 ## Integrantes del equipo
