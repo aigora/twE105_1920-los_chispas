@@ -24,56 +24,33 @@ int main(){
 
 
     case 1:
-
     printf("\n");
       printf("1)Simulador Examen\n");
-
-
       break;
-
-
+			  
     case 2:
-
       printf("\n");
       printf("2)3 en raya\n");
-
-
       break;
-
 
     case 3:
-
       printf("\n");
       printf("3)Quien Quiere ser Gamemillonario\n");
-
-
       break;
-
 
     case 4:
-
       printf("\n");
       printf("4)Ahorcado\n");
-
-
       break;
-
 
 	case 5:
-
       printf("\n");
       printf("5)Hundir la flota\n");
-
-
       break;
-
-
+			  
 	case 6:
-
       printf("\n");
       printf("6)Bandersnatch\n");
-
-
       break;
 
 
