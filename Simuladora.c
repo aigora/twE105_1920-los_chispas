@@ -1,41 +1,67 @@
 #include <stdio.h>
 
+
 int main (){
+	
+	// 0 - Sin tipo, 1 - Agua, 2 - Fuego, 3 - Planta
+	
+	//Ataque[3] = { Tipo, Daño, Precision}
+	
+	
 	//Estudiante
 	char nombre[9];
 	int vida_est;
-	int copiar[2] ={25, 33}, repasar[2] ={10, 100};
+	int latigo_cepa[3] = {3, 25, 75}, pistola_agua[3] = {1, 15, 100}, ascuas[3] = {2, 35, 50}, cura[3] = {0, 0, 70}
 	int eleccion;
 	
-	//Examen
-	int nota;
+	//Ash
+	int 
 	
-	//Otros
+	//Brock
+	
+	
+	//Misty
+	
+	
+	//Rival combate
+	int vida_rival = 200;
+	
+	//Otro
 	int turno = 1;
-	int tiempo;
 	
 	//Introduccion
 	printf("Bienvenido al simulador de examenes, por favor, escribe tu nombre: ");
 	scanf("%s", &nombre);
 	
-	//Combate
-	while (nota < 100){
+	printf("A continuacion elige a quien quieres enfrentarte: /n");
+	printf("Ash <1> /n Brock <2> /n Misty <3>");
+	scanf("%i", &eleccion);
+	
+	if (eleccion == 1)
 		
-		//Contador
-		tiempo = 120 - turno * 20;
-		printf("\n\nQuedan %i minutos\n", tiempo);
+	//Combate
+	while (vida_rival > 0){
+		
+		//Contador turnos
+		printf("Turno %i", turno);
 		turno++;
 		
 		//Turno estudiante
-		printf("Elige una accion:\n Copiar<1> , Repasar<2>\n");
+		printf("Elige una accion:\n Latigo Cepa<1> , Pistola Agua<2>, Ascuas<3>, Cura<4>\n");
 		scanf("%i", &eleccion);
 		
 		if (eleccion == 1){
-				nota += copiar[0];
+				vida_rival -= latigo_cepa[1];
 			}
 		else if (eleccion == 2){
-				nota += repasar[0]; 
+				vida_rival -= pistola_agua[1]; 
 			}
+		else if (eleccion == 3){
+				vida_rival -= ascuas[1];
+		}
+		else if (eleccion == 4){
+				vida_est += 25;
+		}
 		printf("Tienes %i puntos\n\n", nota);
 		
 		
