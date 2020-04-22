@@ -1,0 +1,46 @@
+#include<stdio.h>
+
+
+int main(){
+	
+	
+	
+
+
+int j1,j2,i,j;
+char m[3][3];
+char tab;
+
+tab = '1';
+
+
+
+
+
+
+
+for(i = 0;i < 3; i++){
+	for(j= 0; j < 3; j++){
+
+	
+	m[i][j] = tab++;
+	printf(" %c",m[i][j]);
+	
+}
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+return 0;
+}
