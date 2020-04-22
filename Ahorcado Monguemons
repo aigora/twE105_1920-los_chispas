@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <time.h>
+#define N 10
+#define D 30
+
+typedef struct{
+	char nomb[D];
+}monguemon;
+
+void main()
+{
+
+	char letra;
+	int intentos=0, fallos=0;
+	
+	printf("\tBienvenidos al Ahorcado Monguemons!!!!!\n");
+		system ("PAUSE");
+			system("CLS");
+	printf("\tEstamos listos??\n");
+		system ("PAUSE");
+			system("CLS");
+	printf("Bien, el juego consiste en adivinar el nombre de un monguemon aleatorio con un numero de intentos igual a 20\n");//los nombres son inventados pero legibles
+
+	monguemon cat[N]={"Picachaz","Melele","Caletor","Hidramo","Asmir","Drum","Tortu","Gorgon","Chazini","Fofito"};
+	
+	system ("PAUSE");
+	system("CLS");
+}
