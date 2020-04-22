@@ -1,0 +1,33 @@
+#include<stdio.h>
+
+
+int main(){
+	
+	
+	
+
+
+int j1,j2;
+char m[3][3];
+
+fun(c);
+
+
+printf(" BIENVENIDO AL 3 EN RAYA");
+
+printf("\n\n Jugador 1 -> O");
+printf("\n\n Jugador 2 -> X");
+
+
+
+
+
+
+
+
+
+
+
+
+return 0;
+}
