@@ -11,39 +11,48 @@ int main (){
 	//Estudiante
 	char nombre[9];
 	int vida_est;
-	int latigo_cepa[3] = {3, 25, 75}, pistola_agua[3] = {1, 15, 100}, ascuas[3] = {2, 35, 50}, cura[3] = {0, 0, 70}
-	int eleccion;
+	int latigo_cepa[3] = {3, 25, 75}, pistola_agua[3] = {1, 15, 100}, ascuas[3] = {2, 35, 50}, cura[3] = {0, 0, 70};
+	int eleccion = 4;
 	
-	//Ash
-	int 
-	
-	//Brock
+	//Ash, tipo 2 - Fuego
 	
 	
-	//Misty
+	//Brock, tipo 3 - Planta
+	
+	
+	//Misty, tipo 1 - Agua
 	
 	
 	//Rival combate
-	int vida_rival = 200;
+	int vida_rival = 200, tipo;
 	
 	//Otro
 	int turno = 1;
+	int probabilidades;
 	
 	//Introduccion
-	printf("Bienvenido al simulador de examenes, por favor, escribe tu nombre: ");
+	printf("Bienvenido al simulador de combate, por favor, escribe tu nombre: ");
 	scanf("%s", &nombre);
 	
-	printf("A continuacion elige a quien quieres enfrentarte: /n");
-	printf("Ash <1> /n Brock <2> /n Misty <3>");
+	printf("A continuacion, %s elige a quien quieres enfrentarte: \n", nombre);
+	while(eleccion > 3){
+	printf("Ash <1> \nBrock <2> \nMisty <3>\n");
 	scanf("%i", &eleccion);
-	
+		}
+		
+		
 	if (eleccion == 1)
+		tipo = 2;
+	else if (eleccion == 2)
+		tipo = 3;
+	else if (eleccion == 3)
+		tipo = 1;
 		
 	//Combate
 	while (vida_rival > 0){
 		
 		//Contador turnos
-		printf("Turno %i", turno);
+		printf("\n\n\n-------------------------\nTurno %i\n\n", turno);
 		turno++;
 		
 		//Turno estudiante
@@ -62,7 +71,6 @@ int main (){
 		else if (eleccion == 4){
 				vida_est += 25;
 		}
-		printf("Tienes %i puntos\n\n", nota);
 		
 		
 	}
