@@ -12,9 +12,9 @@ typedef struct{
 
 //FUNCIONES 
 int numaleatorio(int n);//1
-void juego(char adivinapalabra[D]);//2
-int ahorcado(char adivinapalabra[E], char cadena[E]);//3
-int imprime_ahorcado(int intentos);//4
+void juego(char adivinapalabra[D], char cadena[D]);//2
+int ahorcado(char adivinapalabra[D], char cadena[D]);//3
+int imp_ahorcado(int intentos);//4
 
 //CODIGO PRINCIPAL
 void main()
@@ -23,6 +23,7 @@ void main()
 	char letra;
 	int intentos=0, fallos=0;
 	int aleatorio=0;
+	char letrausuario[D]=" ";
 	
 	printf("\tBienvenidos al Ahorcado !!!!!\n");
 		system ("PAUSE");
@@ -44,7 +45,7 @@ void main()
 				system("CLS");
 				printf("Has elegido la categoria de Peliculas\n");
 				aleatorio = numaleatorio(8);
-				juego(peliculas[aleatorio].nomb);
+				juego(peliculas[aleatorio].nomb, letrausuario);
 	  			break;
 	           }
        		case 'b':
@@ -53,7 +54,7 @@ void main()
 				system("CLS");
 				printf("Has elegido la categoria de Series\n");
 				aleatorio = numaleatorio(8);
-				juego(series[aleatorio].nomb);
+				juego(series[aleatorio].nomb, letrausuario);
 	  			break;
 	           }
        		case 'c':
@@ -62,7 +63,7 @@ void main()
 				system("CLS");
 				printf("Has elegido la categoria de Equipos de Futbol\n");
 				aleatorio = numaleatorio(8);
-				juego(teams[aleatorio].nomb);
+				juego(teams[aleatorio].nomb, letrausuario);
 	  			break;
 	           }
 
@@ -91,25 +92,78 @@ int i;
 }
 //2
 
-void juego(char adivinapalabra[D])
-{int errores, intentos;
+void juego(char adivinapalabra[D], char cadena[D])
+{int errores, intentos, puntuacion, perder;
+ char nombre_g[D]="";
+ float t1 =clock(), t2, tf;
 while(1)
 {
-	
+	fallos=ahorcado(adivinapalabra, cadena);
+	if(fallos==-1)
+	{
+		printf("Enhorabuena, has ganado!!!!!!!");
+		t2=clock();
+		tf=(t2-t1)/CLOCKS_PER_SEC;
+		puntuacion=1000000/tf*intentos;
+		printf("Tu puntuacion ha sido de %d y lo has terminado en %f, no esta nada mal...", puntuacion, tf);
+		printf("Con que nombre quieres guardar la puntuacion obtenida?\n");
+		scanf("%s\n", nombre);
+				/*	fprintf(agregar, "%s.%i\n", nombre, puntuacion);
+			fclose(agregar);
+			FILE *leer=fopen("puntuacion_ahorcado.txt","r");
+			Puntuaciones(lista_puntuaciones, leer);
+			break;*/
+	}
+	intentos-=fallos;
+	perder=imp_ahorcado(intentos);	
 }
-
 
 }
 
 //3
-int ahorcado(char adivinapalabra[E], char cadena[E])
+int ahorcado(char adivinapalabra[D], char letrausuario[D])
 {
 }
 
 
 //4
-int imprime_ahorcado(int intentos)
+int imp_ahorcado(int intentos)
 {
+		if(intentos==7){
+	printf("\tTe quedan %d intentos\n\n", intentos);
+				printf(" _______\n/        |\n|\n|\n|\n|\n|\n|__\n");	
+	}
+	if(intentos==6){
+	printf("\tTe quedan %d intentos\n\n", intentos);
+				printf(" _______\n/        |\n|      (x_x)\n|\n|\n|\n|\n|__\n");	
+	}
+	if(intentos==5){
+	printf("\tTe quedan %d intentos\n\n", intentos);
+				printf(" _______\n/        |\n|      (x_x)\n|        |\n|\n|\n|\n|__\n");
+	}
+	if(intentos==4){
+	printf("\tTe quedan %d intentos\n\n", intentos);
+				printf(" _______\n/        |\n|      (x_x)\n|       _| \n|       \n|\n|\n|__\n");
+	}																			
+	if(intentos==3){																				 
+	printf("\tTe quedan %d intentos\n\n", intentos);					 
+				printf(" _______\n/        |\n|      (x_x)\n|       _|_ \n|       \n|\n|\n|__\n");
+			}
+				
+	if(intentos==2){
+	printf("\tTe quedan %d intentos\n\n", intentos);
+				printf(" _______\n/        |\n|      (x_x)\n|       _|_ \n|        |\n|\n|\n|__\n");
+	}
+	if(intentos==1){
+	printf("\tTe quedan %d intentos\n\n", intentos);
+				printf(" _______\n/        |\n|      (x_x)\n|       _|_ \n|        | \n|       |  \n|\n|__\n");
+	}
+	if(intentos==0){
+				printf(" _______\n/        |\n|      (x_x)\n|       _|_ \n|        | \n|       | |\n|\n|__\n");
+	printf("\tHAS PERDIDO :(\n");	
+	return 1;
+	}
+	return 0;
 }
 
 
