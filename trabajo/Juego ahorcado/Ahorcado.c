@@ -4,17 +4,23 @@
 #include <string.h>
 #define N 10
 #define D 30
-
+#define F 20
 //ESTRUCTURAS
 typedef struct{
 	char nomb[D];
 }adivinanza;
+
+typedef struct{
+	char nombre[D];
+	int punt;
+}usuario;
 
 //FUNCIONES 
 int numaleatorio(int n);//1
 void juego(char adivinapalabra[D], char cadena[D]);//2
 int ahorcado(char adivinapalabra[D], char cadena[D]);//3
 int imp_ahorcado(int intentos);//4
+void Puntuaciones(usuario lista_punt[F],FILE *leer);//5
 
 //CODIGO PRINCIPAL
 void main()
@@ -75,7 +81,7 @@ void main()
     	printf("\n Quieres jugar de nuevo? Pulsa 1:");
 		if(getch()=='1') {
 			system("cls");
-		goto empezar;
+		//goto empezar;
     }
 }
 
@@ -98,8 +104,8 @@ void juego(char adivinapalabra[D], char cadena[D])
  float t1 =clock(), t2, tf;
 while(1)
 {
-	fallos=ahorcado(adivinapalabra, cadena);
-	if(fallos==-1)
+	errores=ahorcado(adivinapalabra, cadena);
+	if(errores==-1)
 	{
 		printf("Enhorabuena, has ganado!!!!!!!");
 		t2=clock();
@@ -107,14 +113,14 @@ while(1)
 		puntuacion=1000000/tf*intentos;
 		printf("Tu puntuacion ha sido de %d y lo has terminado en %f, no esta nada mal...", puntuacion, tf);
 		printf("Con que nombre quieres guardar la puntuacion obtenida?\n");
-		scanf("%s\n", nombre);
-				/*	fprintf(agregar, "%s.%i\n", nombre, puntuacion);
+		scanf("%s\n", nombre_g);
+				/*	fprintf(agregar, "%s.%i\n", nombre_g, puntuacion);
 			fclose(agregar);
 			FILE *leer=fopen("puntuacion_ahorcado.txt","r");
 			Puntuaciones(lista_puntuaciones, leer);
 			break;*/
 	}
-	intentos-=fallos;
+	intentos-=errores;
 	perder=imp_ahorcado(intentos);	
 }
 
@@ -123,6 +129,39 @@ while(1)
 //3
 int ahorcado(char adivinapalabra[D], char letrausuario[D])
 {
+	int i, a, same, ultima_letra_usuario=strlen(letrausuario), dif='A'-'a', Pregunta_fallo, ganado=1;
+	for(i=0; adivinapalabra[i]!='\n'; i++)
+	{
+	  for(a=0, same=0; a<ultima_letra_usuario; a++)
+	  {
+	  	if(letrausuario[a]==adivinapalabra[i] || letrausuario[a]==adivinapalabra[i]-dif)
+	  	{same=1;
+		  }
+		  }
+	  if(same==1){
+	    printf("%c", adivinapalabra[i]);}
+    	else if(adivinapalabra[i]==' '){
+			printf("   "); }
+	  else{
+	  	ganado=0;
+	  	if(adivinapalabra[i]>= 'A' && adivinapalabra[i]<='Z'){
+	  		printf("_ ");
+		  }
+		  	  	if(adivinapalabra[i]>= 'a' && adivinapalabra[i]<='z'){
+	  		printf("_ ");
+		  }
+	  }		  	
+	}
+	if(ganado==1){
+		//printf("\nHAS GANADO!!");
+		return -1;
+	}
+	if(strlen(adivinapalabra)!=1)
+		for(i=0,Pregunta_fallo=1;adivinapalabra[i]!='\0';i++)
+			if(letrausuario[ultima_letra_usuario-1]==adivinapalabra[i] || letrausuario[ultima_letra_usuario-1]==adivinapalabra[i]-dif)
+				Pregunta_fallo=0;
+		
+	return Pregunta_fallo;	
 }
 
 
@@ -165,5 +204,20 @@ int imp_ahorcado(int intentos)
 	}
 	return 0;
 }
+
+
+
+//5
+void Puntuaciones(usuario lista_punt[F],FILE *leer)
+{
+	usuario aux;
+	int i, a;
+	i=0;
+		while(fscanf(leer_archivo,"%[^.].%i\n",lista_punt[i].nombre,&lista_punt[i].punt)!=EOF)
+
+}
+
+
+
 
 

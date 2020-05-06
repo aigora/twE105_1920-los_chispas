@@ -28,12 +28,12 @@ void main(){
 	char letra;
 	char letrausuario[E]=" ";
 
-/*	printf("Bienvenido al Ahorcado\n");
+	printf("Bienvenido al Ahorcado\n");
 	system ("PAUSE");
 	system("CLS");
 	printf("En este juego el objetivo es adivinar la frase o palabra con el minimo numero de fallos\n");
 	system("PAUSE"); 
-	system("CLS");*/
+	system("CLS");
 	printf("Selecciona la categoria de la frase:\na.Peliculas\nb.Series\nc.Musica\nd.Deportes\n");
 		switch(getch()){
 			case 'a':
@@ -81,7 +81,7 @@ void main(){
 	
 	
 
-
+////////////////////////////////////////////////////////////////
 void principal(char adivinapalabra[30], char cadena[30]){
 	int intentos=7, fallos=0, i, puntuacion,si_perdido;
 	i=0;
@@ -120,14 +120,14 @@ void principal(char adivinapalabra[30], char cadena[30]){
 		i++;					
 	}
 }
-
+////////////////////////////////////////////////////////////////
 int numaleatorio(int n){
 srand(time(NULL));
 int i;
 	i = rand()%n;
 	return i;
 }
-
+///////////////////////////////////////////////////////////////////////
 int ahorcado(char adivinapalabra[30], char letrausuario[30]){
 	
 	int i, n,Pregunta_fallo, iguales, ganado=1, dif='A'-'a',ultima_letra_usuario=strlen(letrausuario);
@@ -168,6 +168,7 @@ int ahorcado(char adivinapalabra[30], char letrausuario[30]){
 		
 	return Pregunta_fallo;
 }
+///////////////////////////////////////////////////////////////////////////////
 int imprime_ahorcado(int intentos){
 	if(intentos==7){
 	printf("Te quedan %d intentos\n\n", intentos);
@@ -205,7 +206,7 @@ int imprime_ahorcado(int intentos){
 	}
 	return 0;
 }
-
+/////////////////////////////////////////////////////////////////////////
 void Puntuaciones(usuario lista_punt[D],FILE *leer_archivo){//Ordena el vector de usuarios de mayor (en la posición 0) a menor
 	usuario aux;
 	int i=0,j;
@@ -222,3 +223,4 @@ void Puntuaciones(usuario lista_punt[D],FILE *leer_archivo){//Ordena el vector d
 		printf("\t   Nombre \t Puntuacion");
 		for(i=0;lista_punt[i].punt!=0&&i<10;i++)
 			printf("\n\t%i- %s \t %i",i+1,lista_punt[i].nombre,lista_punt[i].punt);
+}
