@@ -74,5 +74,5 @@ int main (){
 		
 		
 	}
-printf("Felicidades %s has aprobado el examen", nombre);
+printf("Felicidades %s, has ganado", nombre);
 }
