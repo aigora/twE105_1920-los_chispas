@@ -3,6 +3,7 @@
 int acierto(int prob, int valor_aleatorio, int dano);
 
 //Probabilidad de critico
+int critico(int valor_critico);
 
 int main (){
 	
@@ -62,17 +63,20 @@ int main (){
 		scanf("%i", &eleccion);
 		
 		if (eleccion == 1){
-			vida_rival -= acierto(latigo_cepa[2], srand()% 101, latigo_cepa[1]);
-			
+			vida_rival -= critico(srand()% 101) * acierto(latigo_cepa[2], srand()% 101, latigo_cepa[1]);
+			printf("Has hecho %i puntos de daño, la vida del rival pasa a ser %i", critico(srand()% 101) * acierto(latigo_cepa[2], srand()% 101, latigo_cepa[1]), vida_rival);
 			}
 		else if (eleccion == 2){
-			vida_rival -= acierto(pistola_agua[2], srand()% 101, pistola_agua[1]); 
+			vida_rival -= critico(srand()% 101) * acierto(pistola_agua[2], srand()% 101, pistola_agua[1]); 
+			printf("Has hecho %i puntos de daño, la vida del rival pasa a ser %i", critico(srand()% 101) * acierto(pistola_agua[2], srand()% 101, pistola_agua[1]), vida_rival);
 			}
 		else if (eleccion == 3){
-			vida_rival -= acierto(ascuas[2], srand()% 101, ascuas[1]);
+			vida_rival -= critico(srand()% 101) * acierto(ascuas[2], srand()% 101, ascuas[1]);
+			printf("Has hecho %i puntos de daño, la vida del rival pasa a ser %i", critico(srand()% 101) * acierto(ascuas[2], srand()% 101, ascuas[1]), vida_rival);
 		}
 		else if (eleccion == 4){
 			vida_est += acierto(cura[2], srand()% 101, cura[1]);
+			printf("Te has curado %i puntos, tu vida pasa a ser %i", acierto(cura[2], srand()% 101, cura[1]), vida_est);
 		}
 		
 		//Turno rival
@@ -95,5 +99,13 @@ int acierto(int prob, int valor_aleatorio, int dano){
 	if(valor_aleatorio < prob)
 		return dano;
 	else
-		return dano - dano;
+		return 0;
+}
+
+int critico(int valor_critico){
+	
+	if(valor_critico < 15)
+		return 2;
+	else
+		return 1;
 }
