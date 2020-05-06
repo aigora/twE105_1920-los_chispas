@@ -3,8 +3,9 @@
 
 void fun (char tab[3][3]);
 void num (char tab[3][3]);
-void Dibujo_tab (char tab[3][3]);
+void dibujo (char tab[3][3]);
 void Casillas(char tab[3][3]);
+void rival(char tab[3][3]);
 
 int main(){
 	
@@ -21,8 +22,9 @@ return 0;
 void fun (char tab [3][3]) {
 		
 num (tab);
-Dibujo_tab (tab);
 Casillas (tab);
+dibujo (tab);
+rival (tab);
 
 }
 
@@ -40,33 +42,6 @@ void num (char tab[3][3]){
 	}
 	
 }
-void Dibujo_tab (char tab [3][3]){
-	
-		int i,j;
-		
-		
-		
-		
-	printf("\n -------------------\n");
-	
-	
-	
-	for(i = 0; i< 3;i++)
-	
-	{
-		for (j = 0;j < 3; j++)
-		{
-	printf(" | %c | ", tab[i][j]);
-	
-}
-
-printf("\n -------------------\n");
-}
-
-
-}
-
-
 void Casillas (char tab[3][3]){
 	char aux;
 	int i,j,k;
@@ -183,11 +158,41 @@ void Casillas (char tab[3][3]){
 		}
 	
 }
+
+
 }
-while (k==1);
+}while (k==1);
 tab[i][j] = 'X';
+
+
+void dibujo (char tab [3][3]){
+	
+		int i,j;
+		
+		
+		
+		
+	printf("\n -------------------\n");
+	
+	
+	
+	for(i = 0; i< 3;i++)
+	
+	{
+		for (j = 0;j < 3; j++)
+		{
+	printf(" | %c | ", tab[i][j]);
+	
 }
 
+printf("\n -------------------\n");
+}
+
+
+}
+
+
+}
 
 void rival (char tab[3][3]){
 	char al;
