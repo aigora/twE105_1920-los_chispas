@@ -22,9 +22,12 @@ return 0;
 void fun (char tab [3][3]) {
 		
 num (tab);
+
+dibujo (tab);
 Casillas (tab);
 dibujo (tab);
 rival (tab);
+dibujo (tab);
 
 }
 
@@ -164,12 +167,32 @@ void Casillas (char tab[3][3]){
 }while (k==1);
 tab[i][j] = 'X';
 
+}
+void rival (char tab[3][3]){
+
+	int i,j,k;
+	srand(time(NULL));
+	do {
+		i = rand() % 3;
+        j = rand() % 3;
+        k = 0;
+        
+        
+if (tab[i][j] == 'X' || tab[i][j] == 'O'){
+
+k == 1;
+	}
+	
+	
+}while(k == 1);
+}
+
+
+
 
 void dibujo (char tab [3][3]){
 	
 		int i,j;
-		
-		
 		
 		
 	printf("\n -------------------\n");
@@ -192,17 +215,8 @@ printf("\n -------------------\n");
 }
 
 
-}
 
-void rival (char tab[3][3]){
-	char al;
-	int i,j;
-	srand(time(NULL));
-	
-	i = rand() % 3;
-      j = rand() % 3;
 
-	
-}
+
 
 
