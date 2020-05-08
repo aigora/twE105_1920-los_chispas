@@ -19,7 +19,7 @@ system ("pause");
 return 0;
 }
 
-void fun (char tab [3][3]) {
+void fun (char tab[3][3]) {
 		
 num (tab);
 Casillas (tab);
@@ -165,7 +165,7 @@ void Casillas (char tab[3][3]){
 tab[i][j] = 'X';
 
 
-void dibujo (char tab [3][3]){
+void dibujo (char tab[3][3]){
 	
 		int i,j;
 		
@@ -181,7 +181,7 @@ void dibujo (char tab [3][3]){
 	{
 		for (j = 0;j < 3; j++)
 		{
-	printf(" | %c | ", tab[i][j]);
+	//printf(" | %c | ", tab[i][j]);
 	
 }
 
