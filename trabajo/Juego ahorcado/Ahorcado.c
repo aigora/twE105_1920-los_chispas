@@ -25,12 +25,16 @@ void Puntuaciones(usuario lista_punt[F],FILE *leer);//5
 //CODIGO PRINCIPAL
 void main()
 {
-
+    empezar:
+	system ("PAUSE");    	
+    system("cls");
 	char letra;
 	int intentos=0, fallos=0;
 	int aleatorio=0;
 	char letrausuario[D]=" ";
-	
+	 adivinanza peliculas[8]={"MISION IMPOSIBLE", "TOP GUN", "STAR WARS", "INDIANA JONES", "JUMANJI", "LOS VENGADORES", "EL IRLANDES","HARRY POTTER"};
+    adivinanza series[8]={"JUEGO DE TRONOS", "BREAKING BAD", "LA CASA DE PAPEL", "ELITE", "ARROW", "POKEMON", "VIKINGOS", "STRANGER THINGS"};
+	adivinanza teams[8]={"REAL MADRID", "ATLETICO DE MADRID", "BARCELONA", "LIVERPOOL", "WATFORD", "GENK", "RIVER", "BBOCA JUNIORS"};
 	printf("\tBienvenidos al Ahorcado !!!!!\n");
 		system ("PAUSE");
 			system("CLS");
@@ -39,10 +43,8 @@ void main()
 			system("CLS");
 	printf("Bien, comencemos!!!!\n");
 	printf("Selecciona categoria:\n\ta)Peliculas\n\tb)Series\n\tc)Equipos Futbol\n");
-   
-    adivinanza peliculas[8]={"MISION IMPOSIBLE", "TOP GUN", "STAR WARS", "INDIANA JONES", "JUMANJI", "LOS VENGADORES", "EL IRLANDES","HARRY POTTER"};
-    adivinanza series[8]={"JUEGO DE TRONOS", "BREAKING BAD", "LA CASA DE PAPEL", "ELITE", "ARROW", "POKEMON", "VIKINGOS", "STRANGER THINGS"};
-	adivinanza teams[8]={"REAL MADRID", "ATLETICO DE MADRID", "BARCELONA", "LIVERPOOL", "WATFORD", "GENK", "RIVER", "BBOCA JUNIORS"};
+   scanf("%c", &letra);
+
 	switch (letra)
     {
        		case 'a':
@@ -75,13 +77,13 @@ void main()
 
 			default:
 			printf("Error, seleccione opcion valida\n");
-			system ("PAUSE");   
+			system ("PAUSE");  
 			   			   			
 	}
     	printf("\n Quieres jugar de nuevo? Pulsa 1:");
 		if(getch()=='1') {
 			system("cls");
-		//goto empezar;
+		goto empezar;
     }
 }
 
@@ -98,13 +100,19 @@ int i;
 }
 //2
 
-void juego(char adivinapalabra[D], char cadena[D])
-{int errores, intentos, puntuacion, perder;
+void juego(char adivinapalabra[D], char usadas[D])
+{int errores, intentos, puntuacion, perder, i;
  char nombre_g[D]="";
  float t1 =clock(), t2, tf;
+ usuario lista_puntuaciones[F]={{"iniciar",0}};
+ FILE *agregar=fopen("puntuacion_ahorcado.txt","a");
+	if(agregar==NULL){
+		printf("\n\t Error");
+		exit(1);
+	}
 while(1)
 {
-	errores=ahorcado(adivinapalabra, cadena);
+	errores=ahorcado(adivinapalabra, usadas);
 	if(errores==-1)
 	{
 		printf("Enhorabuena, has ganado!!!!!!!");
@@ -113,15 +121,22 @@ while(1)
 		puntuacion=1000000/tf*intentos;
 		printf("Tu puntuacion ha sido de %d y lo has terminado en %f, no esta nada mal...", puntuacion, tf);
 		printf("Con que nombre quieres guardar la puntuacion obtenida?\n");
-		scanf("%s\n", nombre_g);
-				/*	fprintf(agregar, "%s.%i\n", nombre_g, puntuacion);
+		scanf(" %s\n", nombre_g);
+			fprintf(agregar, "%s.%i\n", nombre_g, puntuacion);
 			fclose(agregar);
 			FILE *leer=fopen("puntuacion_ahorcado.txt","r");
 			Puntuaciones(lista_puntuaciones, leer);
-			break;*/
+			break;
 	}
 	intentos-=errores;
 	perder=imp_ahorcado(intentos);	
+	if(perder==1)
+	break;
+	printf("\n\tLlevas seleccionadas las siguientes letras: %s\n", usadas);
+	printf("\n\tIntroduce nueva letra\n");
+	usadas[i]=getch();
+	i++;
+	system("cls");	
 }
 
 }
@@ -139,7 +154,7 @@ int ahorcado(char adivinapalabra[D], char letrausuario[D])
 		  }
 		  }
 	  if(same==1){
-	    printf("%c", adivinapalabra[i]);}
+	    printf(" %c", adivinapalabra[i]);}
     	else if(adivinapalabra[i]==' '){
 			printf("   "); }
 	  else{
@@ -208,13 +223,24 @@ int imp_ahorcado(int intentos)
 
 
 //5
-void Puntuaciones(usuario lista_punt[F],FILE *leer)
+void Puntuaciones(usuario lista_punt[F],FILE *leer_archivo)
 {
 	usuario aux;
 	int i, a;
 	i=0;
-		while(fscanf(leer_archivo,"%[^.].%i\n",lista_punt[i].nombre,&lista_punt[i].punt)!=EOF)
-
+		while(fscanf(leer_archivo,"%[^.].%i\n",lista_punt[i].nombre,&lista_punt[i].punt)!=EOF){
+		i++;}
+			for(i=0;lista_punt[i].punt!=0;i++)
+		      for(a=i+1;lista_punt[a].punt!=0;a++)
+		    	if(lista_punt[i].punt<lista_punt[a].punt){
+				aux=lista_punt[i];
+				lista_punt[i]=lista_punt[a];
+				lista_punt[a]=aux;
+			}
+    system("cls");
+    printf("\t   Nombre \t Puntuacion");
+		for(i=0;lista_punt[i].punt!=0&&i<10;i++)
+			printf("\n\t%i- %s \t %i",i+1,lista_punt[i].nombre,lista_punt[i].punt);    
 }
 
 

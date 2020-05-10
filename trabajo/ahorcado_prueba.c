@@ -11,6 +11,7 @@ typedef struct{
 	char nombre[E];
 	int punt;
 }usuario;
+
 void principal(char adivinapalabra[E], char cadena[E]);
 int numaleatorio(int n);
 int ahorcado(char adivinapalabra[E], char cadena[E]);
@@ -19,7 +20,7 @@ void Puntuaciones(usuario lista_punt[D],FILE *leer);
 
 void main(){
 	empezar:
-	system("COLOR 2F");
+	system("COLOR 4F");
 	int aleatorio=0;
 	pal peliculas[10]={"AVENGERS ENDGAME" , "TRANSFORMERS" , "HARRY POTTER" , "TITANIC" , "EL SENOR DE LOS ANILLOS" , "STAR WARS" , "GLADIADOR" , "JURASSIC PARK" , "EL CABALLERO OSCURO" , "TOY STORY"};
 	pal series[10]={"JUEGO DE TRONOS" , "STRANGER THINGS" , "WESTWORLD" , "FRIENDS" , "COMO CONOCI A VUESTRA MADRE" , "LA QUE SE AVECINA" , "LA CASA DE PAPEL" , "PEAKY BLINDERS" , "EL PRINCIPE DE BEL AIR" , "THE BIG BANG THEORY"};
@@ -31,7 +32,7 @@ void main(){
 	printf("Bienvenido al Ahorcado\n");
 	system ("PAUSE");
 	system("CLS");
-	printf("En este juego el objetivo es adivinar la frase o palabra con el minimo numero de fallos\n");
+	printf("En este juego el objetivo es adivinar la palabra con el minimo numero de fallos y lo mas rapido posible\n");
 	system("PAUSE"); 
 	system("CLS");
 	printf("Selecciona la categoria de la frase:\na.Peliculas\nb.Series\nc.Musica\nd.Deportes\n");
@@ -82,7 +83,7 @@ void main(){
 	
 
 ////////////////////////////////////////////////////////////////
-void principal(char adivinapalabra[30], char cadena[30]){
+void principal(char adivinapalabra[30], char usadas[30]){
 	int intentos=7, fallos=0, i, puntuacion,si_perdido;
 	i=0;
 	char nombre[20]="";
@@ -94,7 +95,7 @@ void principal(char adivinapalabra[30], char cadena[30]){
 	}
 	float t1=clock(), t2, tiempo_total;
 	while(1){
-		fallos=ahorcado(adivinapalabra, cadena);
+		fallos=ahorcado(adivinapalabra, usadas);
 		if(fallos==-1){
 			printf("\nHAS GANADO!!\n");
 			t2=clock();
@@ -113,9 +114,9 @@ void principal(char adivinapalabra[30], char cadena[30]){
 		printf("\n\n");
 		si_perdido=imprime_ahorcado(intentos);
 		if(si_perdido==1) break;
-		printf("\nLas letras introducidas que llevas son: %s\n", cadena);
+		printf("\nLas letras introducidas que llevas son: %s\n", usadas);
 		printf("Introduce una letra:\n");
-		cadena[i]=getch();
+		usadas[i]=getch();
 		system("CLS");				
 		i++;					
 	}
@@ -220,7 +221,7 @@ void Puntuaciones(usuario lista_punt[D],FILE *leer_archivo){//Ordena el vector d
 				lista_punt[j]=aux;
 			}
 						system("cls");
-		printf("\t   Nombre \t Puntuacion");
+ 		printf("\t   Nombre \t Puntuacion");
 		for(i=0;lista_punt[i].punt!=0&&i<10;i++)
 			printf("\n\t%i- %s \t %i",i+1,lista_punt[i].nombre,lista_punt[i].punt);
 }
