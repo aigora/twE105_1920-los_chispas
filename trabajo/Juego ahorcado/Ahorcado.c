@@ -32,7 +32,7 @@ void main()
 	int intentos=0, fallos=0;
 	int aleatorio=0;
 	char letrausuario[D]=" ";
-	 adivinanza peliculas[8]={"MISION IMPOSIBLE", "TOP GUN", "STAR WARS", "INDIANA JONES", "JUMANJI", "LOS VENGADORES", "EL IRLANDES","HARRY POTTER"};
+	 adivinanza peliculas[8]={"MISION IMPOSIBLE", "TOP GUN", "STAR WARS", "INDIANA JONES", "JUMANJI", "LOS VENGADORES", "EL IRLANDES", "HARRY POTTER"};
     adivinanza series[8]={"JUEGO DE TRONOS", "BREAKING BAD", "LA CASA DE PAPEL", "ELITE", "ARROW", "POKEMON", "VIKINGOS", "STRANGER THINGS"};
 	adivinanza teams[8]={"REAL MADRID", "ATLETICO DE MADRID", "BARCELONA", "LIVERPOOL", "WATFORD", "GENK", "RIVER", "BBOCA JUNIORS"};
 	printf("\tBienvenidos al Ahorcado !!!!!\n");
@@ -43,37 +43,34 @@ void main()
 			system("CLS");
 	printf("Bien, comencemos!!!!\n");
 	printf("Selecciona categoria:\n\ta)Peliculas\n\tb)Series\n\tc)Equipos Futbol\n");
-   scanf("%c", &letra);
+   scanf(" %c", &letra);
 
 	switch (letra)
     {
        		case 'a':
 			case 'A':
-	           {
 				system("CLS");
 				printf("Has elegido la categoria de Peliculas\n");
-				aleatorio = numaleatorio(8);
+				aleatorio = numaleatorio(8)-1;
 				juego(peliculas[aleatorio].nomb, letrausuario);
 	  			break;
-	           }
+	           
        		case 'b':
 			case 'B':
-	           {
 				system("CLS");
 				printf("Has elegido la categoria de Series\n");
-				aleatorio = numaleatorio(8);
+				aleatorio = numaleatorio(8)-1;
 				juego(series[aleatorio].nomb, letrausuario);
 	  			break;
-	           }
+	           
        		case 'c':
 			case 'C':
-	           {
 				system("CLS");
 				printf("Has elegido la categoria de Equipos de Futbol\n");
-				aleatorio = numaleatorio(8);
+				aleatorio = numaleatorio(8)-1;
 				juego(teams[aleatorio].nomb, letrausuario);
 	  			break;
-	           }
+	           
 
 			default:
 			printf("Error, seleccione opcion valida\n");
@@ -101,7 +98,7 @@ int i;
 //2
 
 void juego(char adivinapalabra[D], char usadas[D])
-{int errores, intentos, puntuacion, perder, i;
+{int errores=0, intentos=7, puntuacion, perder, i=0;
  char nombre_g[D]="";
  float t1 =clock(), t2, tf;
  usuario lista_puntuaciones[F]={{"iniciar",0}};
@@ -135,8 +132,8 @@ while(1)
 	printf("\n\tLlevas seleccionadas las siguientes letras: %s\n", usadas);
 	printf("\n\tIntroduce nueva letra\n");
 	usadas[i]=getch();
-	i++;
-	system("cls");	
+	system("cls");
+	i++;	
 }
 
 }
@@ -144,8 +141,8 @@ while(1)
 //3
 int ahorcado(char adivinapalabra[D], char letrausuario[D])
 {
-	int i, a, same, ultima_letra_usuario=strlen(letrausuario), dif='A'-'a', Pregunta_fallo, ganado=1;
-	for(i=0; adivinapalabra[i]!='\n'; i++)
+	int i=0, a, same, ultima_letra_usuario=strlen(letrausuario), dif='A'-'a', Pregunta_fallo, ganado=1;
+	while(adivinapalabra[i]!='\0')
 	{
 	  for(a=0, same=0; a<ultima_letra_usuario; a++)
 	  {
@@ -165,7 +162,8 @@ int ahorcado(char adivinapalabra[D], char letrausuario[D])
 		  	  	if(adivinapalabra[i]>= 'a' && adivinapalabra[i]<='z'){
 	  		printf("_ ");
 		  }
-	  }		  	
+	  }	
+	  i++;	  	
 	}
 	if(ganado==1){
 		//printf("\nHAS GANADO!!");
@@ -184,32 +182,32 @@ int ahorcado(char adivinapalabra[D], char letrausuario[D])
 int imp_ahorcado(int intentos)
 {
 		if(intentos==7){
-	printf("\tTe quedan %d intentos\n\n", intentos);
+	printf("Te quedan %d intentos\n\n", intentos);
 				printf(" _______\n/        |\n|\n|\n|\n|\n|\n|__\n");	
 	}
 	if(intentos==6){
-	printf("\tTe quedan %d intentos\n\n", intentos);
+	printf("Te quedan %d intentos\n\n", intentos);
 				printf(" _______\n/        |\n|      (x_x)\n|\n|\n|\n|\n|__\n");	
 	}
 	if(intentos==5){
-	printf("\tTe quedan %d intentos\n\n", intentos);
+	printf("Te quedan %d intentos\n\n", intentos);
 				printf(" _______\n/        |\n|      (x_x)\n|        |\n|\n|\n|\n|__\n");
 	}
 	if(intentos==4){
-	printf("\tTe quedan %d intentos\n\n", intentos);
+	printf("Te quedan %d intentos\n\n", intentos);
 				printf(" _______\n/        |\n|      (x_x)\n|       _| \n|       \n|\n|\n|__\n");
 	}																			
 	if(intentos==3){																				 
-	printf("\tTe quedan %d intentos\n\n", intentos);					 
+	printf("Te quedan %d intentos\n\n", intentos);					 
 				printf(" _______\n/        |\n|      (x_x)\n|       _|_ \n|       \n|\n|\n|__\n");
 			}
 				
 	if(intentos==2){
-	printf("\tTe quedan %d intentos\n\n", intentos);
+	printf("Te quedan %d intentos\n\n", intentos);
 				printf(" _______\n/        |\n|      (x_x)\n|       _|_ \n|        |\n|\n|\n|__\n");
 	}
 	if(intentos==1){
-	printf("\tTe quedan %d intentos\n\n", intentos);
+	printf("Te quedan %d intentos\n\n", intentos);
 				printf(" _______\n/        |\n|      (x_x)\n|       _|_ \n|        | \n|       |  \n|\n|__\n");
 	}
 	if(intentos==0){
