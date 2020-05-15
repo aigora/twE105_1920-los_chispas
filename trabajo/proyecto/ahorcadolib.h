@@ -2,8 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include "ahorcadolib.h"
+ 
 
 #define N 10
 #define D 30
