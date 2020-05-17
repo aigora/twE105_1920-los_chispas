@@ -1,6 +1,6 @@
 [Project]
-FileName=Proyecto_trabajo.dev
-Name=Proyecto_trabajo
+FileName=Proyecto4.dev
+Name=Proyecto4
 Type=1
 Ver=2
 ObjFiles=
@@ -12,7 +12,7 @@ MakeIncludes=
 Compiler=
 CppCompiler=
 Linker=
-IsCpp=0
+IsCpp=1
 Icon=
 ExeOutput=
 ObjectOutput=
@@ -51,18 +51,8 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit1]
-FileName=Proyecto.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit3]
-FileName=randlib.h
-CompileCpp=0
+FileName=ahorcadolib.c
+CompileCpp=1
 Folder=
 Compile=1
 Link=1
@@ -71,8 +61,18 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=..\..\..\..\..\Desktop\UNI\prueba.c
-CompileCpp=0
+FileName=ahorcadolib.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit3]
+FileName=principal.c
+CompileCpp=1
 Folder=
 Compile=1
 Link=1

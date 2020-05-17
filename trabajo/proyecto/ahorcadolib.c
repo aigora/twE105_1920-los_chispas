@@ -2,12 +2,12 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include "ahorcadolib.h"
-
 #define N 10
 #define D 30
 #define F 20
+
+#include "ahorcadolib.h"
+
 //ESTRUCTURAS
 typedef struct{
 	char nomb[D];
@@ -86,8 +86,8 @@ void Puntuaciones(usuario lista_punt[F],FILE *leer);//5
 		goto empezar;
     }
 }
-*/
 
+*/
 
 //FUNCIONES 
 //1
