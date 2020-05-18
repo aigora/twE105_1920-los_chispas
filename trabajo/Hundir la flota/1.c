@@ -100,38 +100,28 @@ int BarcosAlm(int mapaAlmirante[nf][nc]){
 }
 int infcasilla(char casilla[2]) //Comprueba si el formato de casilla introducio es válido
 {
-	if((casilla[0]>='a' && casilla[0]<='j') || (casilla[0]>='A' && casilla[0]<='J')){
-		if (casilla[0]=='a'||casilla[0]=='A') //asigna la letra introducida por el usuario a un numero (fila)
-				film = 0;
-		else if (casilla[0] == 'b' || casilla[0] == 'B')
-				film = 1;
-		else if (casilla[0] == 'c' || casilla[0] == 'C')
-				film = 2;
-		else if (casilla[0] == 'd' || casilla[0] == 'D')
-				film = 3;
-		else if (casilla[0] == 'e' || casilla[0] == 'E')
-				film = 4;
-		else if (casilla[0] == 'f' || casilla[0] == 'F')
-				film = 5;
-		else if (casilla[0] == 'g' || casilla[0] == 'G')
-				film = 6;
-		else if (casilla[0] == 'h' || casilla[0] == 'H')
-				film = 7;
-		else if (casilla[0] == 'i' || casilla[0] == 'I')
-				film = 8;
-		else if (casilla[0] == 'j' || casilla[0] == 'J')
-				film = 9;
+	if((casilla[0]>='a' && casilla[0]<='j') || (casilla[0]>='A' && casilla[0]<='J')) //Asigna a la letra de la casilla a una fila
+		{
+		if(casilla[0]>='a' && casilla[0]<='j')
+		{
+				film = casilla[0] - 'a';
+		}
+		else if(casilla[0]>='A' && casilla[0]<='J')
+		{
+				film = casilla[0] - 'A';
+		}
 		else
 				return 0;
-	}
-	if ((casilla[1]-1) >= '0' && (casilla[1]-1) <= '9'){
+		}
+	if (casilla[1] >= 49 && casilla[1] <= 57) //Asigna aL numero de la casilla a una columna
+	{
 		columm = casilla[1]- '1';
 				return 1;
 	}
 		else
 				return 0;
 }
-int boom() //Disparos del jugador
+int boom( ) //Disparos del jugador
 {
 	int dispara = 0;
 	char casilladp[2];
@@ -143,47 +133,97 @@ int boom() //Disparos del jugador
 		infcasilla( casilladp);
 		
 		if(infcasilla( casilladp) == 1){
-			if (DisparosmapAlm[film][columm]!='*'){ //comprueba si anteriormente habia disparado en esa posicion
+			if (mapaAlmirante[film][columm] != '*'){ //comprueba si anteriormente habia disparado en esa posicion
 				printf("\n  Ya has disparado a esa casilla, intenta otra distinta");
 			}
 			else
 			{
-				if (DisparosmapCPU[film][columm] == 0) //Cuando toca agua se sabra porque la casilla es 0 
+				if (DisparosmapCPU[film][columm] == 0) //Cuando tocas agua y fallas se sabra porque la casilla es 0 
 				{
 					printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-					DisparosmapAlm[film][columm] = '~';
+					mapaAlmirante[film][columm] = '~';
 					printf("Has fallado, hemos tocado agua");
 					return 0;
 				}
-				if (DisparosmapCPU[film][columm] == 2) //Cuando es 2 ha dado a un submarino de tamaño2
+				if (DisparosmapCPU[film][columm] == 2) //Cuando es 2 ha dado a una slancha de tamaño2
 				{
 					printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-					printf("Hemos tocado el submarino");
-					DisparosmapAlm[film][columm] = '2';
+					printf("Hemos tocado una lancha");
+					mapaAlmirante[film][columm] = '2';
 					return 2;
 				}
-				if (DisparosmapCPU[film][columm] == 3) //Cuando es 3 ha dado a un acorazado de tamaño 3 
+				if (DisparosmapCPU[film][columm] == 3) //Cuando es 3 ha dado a un submarino de tamaño 3 
 				{
 					printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-					printf("Hemos tocado el acorazado");
-					DisparosmapAlm[film][columm] = '3';
+					printf("Hemos tocado un submarino");
+					mapaAlmirante[film][columm] = '3';
 					return 3;
 				}
-				if (DisparosmapCPU[film][columm] == 4) //Cuando es 4 ha dado a un destructor de tamaño 4
+				if (DisparosmapCPU[film][columm] == 4) //Cuando es 4 ha dado a un buque de tamaño 4
 				{
 					printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-					printf("Hemos tocado el dstructor");
-					DisparosmapAlm[film][columm] = '4';
+					printf("Hemos tocado un buque");
+					mapaAlmirante[film][columm] = '4';
 					return 4;
 				}
-				if (DisparosmapCPU[film][columm] == 5) //Cuando es 5 ha dado a un portaviones de tamaño5
+				if (DisparosmapCPU[film][columm] == 5) //Cuando es 5 ha dado a un portaaviones de tamaño5
 				{
 					printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-					printf("Hemos tocado el portaviones");
-					DisparosmapAlm[film][columm] = '5';
+					printf("Hemos tocado un portaaviones");
+					mapaAlmirante[film][columm] = '5';
 					return 5;
 				}
 			}
 		}
 	}
 }
+int boomenmicara( ) //Disparos de la CPU
+{
+	int film, columm;
+	int dispara = 0;
+	while(dispara==0)
+	{
+		film = rand() % (nf+1); //fila random a la que disparo
+		columm = rand() % (nc+1); //columa random a la que dispara
+			if (mapaCPU[film][columm] == '*'){ //comprueba si anteriormente habia disparado en esa posicion
+				if (DisparosmapAlm[film][columm] == 0) //Cuando toca agua se sabra porque la casilla es 0
+				{
+					mapaCPU[film][columm] = '~';
+					printf("Uff, nos hemos salvado los enemigos han fallado");
+					return 0;
+				}
+				else  
+				{
+					if (DisparosmapAlm[film][columm] == 2) //Cuando es 2 ha dado a una slancha de tamaño2
+					{
+						printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+						printf("El enemigo ha tocado una de nuestras lancha");
+						mapaCPU[film][columm] = '2';
+						return 2;
+					}
+					if (DisparosmapAlm[film][columm] == 3) //Cuando es 3 ha dado a un submarino de tamaño 3 
+					{
+						printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+						printf("El enemigo ha tocado uno de nuestros submarino");
+						mapaCPU[film][columm] = '3';
+						return 3;
+					}
+					if (DisparosmapAlm[film][columm] == 4) //Cuando es 4 ha dado a un buque de tamaño 4
+					{
+						printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+						printf("El enemigo ha tocado uno de nuestros buques");
+						mapaCPU[film][columm] = '4';
+						return 4;
+					}
+					if (DisparosmapAlm[film][columm] == 5) //Cuando es 5 ha dado a un portaviones de tamaño5
+					{
+						printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+						printf("El enemigo ha tocado nuestro portaaviones");
+						mapaCPU[film][columm] = '5';
+						return 5;
+					}
+				}
+			}
+	}
+}
+
