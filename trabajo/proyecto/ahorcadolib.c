@@ -5,6 +5,9 @@
 #define N 10
 #define D 30
 #define F 20
+
+#include "ahorcadolib.h"
+
 //ESTRUCTURAS
 typedef struct{
 	char nomb[D];
@@ -23,7 +26,7 @@ int imp_ahorcado(int intentos);//4
 void Puntuaciones(usuario lista_punt[F],FILE *leer);//5
 
 //CODIGO PRINCIPAL
-void main()
+/*void main()
 {
     empezar:
 	system ("PAUSE");    	
@@ -84,7 +87,7 @@ void main()
     }
 }
 
-
+*/
 
 //FUNCIONES 
 //1
@@ -240,8 +243,4 @@ void Puntuaciones(usuario lista_punt[F],FILE *leer_archivo)
 		for(i=0;lista_punt[i].punt!=0&&i<10;i++)
 			printf("\n\t%i- %s \t %i",i+1,lista_punt[i].nombre,lista_punt[i].punt);    
 }
-
-
-
-
 

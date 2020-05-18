@@ -17,7 +17,7 @@ int main(){
 	
 	fun (tab);
 	
-
+	system("pause");
 	return 0;
 }
 
@@ -55,7 +55,7 @@ else if(j == 1){
 
 }
 else {
-		printf("Has empatado, ganas de otra?\n\n");
+		printf("Has empatado, Ganas de otra?\n\n");
 
 }
 
@@ -78,18 +78,18 @@ void Prim (char tab[3][3]){
 
 void Casillas(char tab[3][3]){
 	int i,j,k;
-	char aux;
+	char a;
 	
 	do {
 	do {
 		printf("Coloca una ficha: ");
 		fflush(stdin);
-		scanf("%c",&aux);
-	}	while (aux < '1' || aux> '9');
+		scanf("%c",&a);
+	}	while (a < '1' || a> '9');
 	
 	k = 0;
 	
-	switch (aux){
+	switch (a){
 		case '1':{
 		i = 0;
 		j = 0;	
