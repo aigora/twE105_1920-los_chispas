@@ -1,21 +1,45 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "ahorcadolib.h"
 
 void ahorcado_juego();
 
-void main()
+int main()
 {
-	ahorcado_juego();
+	
+	char letra;
+	do
+	{
+	printf("\tBienvenido a Gameboys\nSelecciona un juego\na)Ahorcado\n");
+	scanf("%c", &letra);
+	switch(letra)
+	{
+		case 'a':
+		case 'A':
+		{
+		 ahorcado_juego();
+		}break;
+		
+		default:
+		printf("Error, seleccione opcion valida\n");
+
+	   }
+    } 
+	while(1);
+
+return 0;
 }
 
 
 void ahorcado_juego()
 {
+	int r=0;
     do
     {
-	system ("PAUSE");    	
-    system("cls");
+printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	char letra;
 	int intentos=0, fallos=0;
 	int aleatorio=0;
@@ -24,11 +48,9 @@ void ahorcado_juego()
     adivinanza series[8]={"JUEGO DE TRONOS", "BREAKING BAD", "LA CASA DE PAPEL", "ELITE", "ARROW", "POKEMON", "VIKINGOS", "STRANGER THINGS"};
 	adivinanza teams[8]={"REAL MADRID", "ATLETICO DE MADRID", "BARCELONA", "LIVERPOOL", "WATFORD", "GENK", "RIVER", "BBOCA JUNIORS"};
 	printf("\tBienvenidos al Ahorcado !!!!!\n");
-		system ("PAUSE");
-			system("CLS");
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	printf("\tEstamos listos??\n");
-		system ("PAUSE");
-			system("CLS");
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"); 
 	printf("Bien, comencemos!!!!\n");
 	printf("Selecciona categoria:\n\ta)Peliculas\n\tb)Series\n\tc)Equipos Futbol\n");
    scanf(" %c", &letra);
@@ -37,7 +59,7 @@ void ahorcado_juego()
     {
        		case 'a':
 			case 'A':
-				system("CLS");
+                printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				printf("Has elegido la categoria de Peliculas\n");
 				aleatorio = numaleatorio(8)-1;
 				juego(peliculas[aleatorio].nomb, letrausuario);
@@ -45,7 +67,7 @@ void ahorcado_juego()
 	           
        		case 'b':
 			case 'B':
-				system("CLS");
+                printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				printf("Has elegido la categoria de Series\n");
 				aleatorio = numaleatorio(8)-1;
 				juego(series[aleatorio].nomb, letrausuario);
@@ -53,7 +75,7 @@ void ahorcado_juego()
 	           
        		case 'c':
 			case 'C':
-				system("CLS");
+                printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				printf("Has elegido la categoria de Equipos de Futbol\n");
 				aleatorio = numaleatorio(8)-1;
 				juego(teams[aleatorio].nomb, letrausuario);
@@ -62,10 +84,10 @@ void ahorcado_juego()
 
 			default:
 			printf("Error, seleccione opcion valida\n");
-			system ("PAUSE");  
+  
 			   			   			
 	}
     	printf("\n Quieres jugar de nuevo? Pulsa 1:");
-
-		}while(getch()=='1');
+        scanf(" %i", &r);
+		}while(r==1);
 }

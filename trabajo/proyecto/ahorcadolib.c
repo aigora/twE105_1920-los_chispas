@@ -94,7 +94,7 @@ int i;
 
 void juego(char adivinapalabra[D], char usadas[D])
 {int errores=0, intentos=7, puntuacion, perder, i=0;
- char nombre_g[D]="";
+ char nombre_g[D]="", nueva_letra;
  float t1 =clock(), t2, tf;
  usuario lista_puntuaciones[F]={{"iniciar",0}};
  FILE *agregar=fopen("puntuacion_ahorcado.txt","a");
@@ -126,8 +126,9 @@ while(1)
 	break;
 	printf("\n\tLlevas seleccionadas las siguientes letras: %s\n", usadas);
 	printf("\n\tIntroduce nueva letra\n");
-	usadas[i]=getch();
-	system("cls");
+	scanf(" %d", &nueva_letra);
+	usadas[i]=nueva_letra;
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	i++;	
 }
 
@@ -230,7 +231,7 @@ void Puntuaciones(usuario lista_punt[F],FILE *leer_archivo)
 				lista_punt[i]=lista_punt[a];
 				lista_punt[a]=aux;
 			}
-    system("cls");
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("\t   Nombre \t Puntuacion");
 		for(i=0;lista_punt[i].punt!=0&&i<10;i++)
 			printf("\n\t%i- %s \t %i",i+1,lista_punt[i].nombre,lista_punt[i].punt);    
