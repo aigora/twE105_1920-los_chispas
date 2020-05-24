@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <string.h>
 
@@ -12,10 +13,10 @@ int atq4[3];
 } rival;
 
 //Funciones
-int multiplicador_tipo(int tipo_atq, int tipo_rival);
+int multiplicador_tipo(int tipo_rival, int tipo_atq);
 int acierto(int prob, int valor_aleatorio, int dano);
 int critico(int valor_critico);
-
+int dano_ataque_rival(int ataque_aleatorio, int prob1, int prob2, int prob3, int prob4, int valor_aleatorio, int ataque1, int ataque2, int ataque3, int ataque4, int valor_critico);
 	
 int main (){
 	
@@ -29,6 +30,7 @@ int main (){
 	int vida_est = 200;
 	int latigo_cepa[3] = {3, 25, 75}, pistola_agua[3] = {1, 15, 100}, ascuas[3] = {2, 35, 75}, cura[3] = {0, 40, 100};
 	int eleccion = 4;
+	int dano_recibido;
 	
 	//Ataques rivales
 
@@ -44,6 +46,7 @@ int main (){
 	srand(time(NULL));
 	int dano_hecho;
 	int i;
+	int acabado = 0;
 	
 
 	rival misty;
@@ -102,65 +105,62 @@ int main (){
 		printf("Asi que eliges a %s, buena eleccion", brock.nombre_rival);
 	}
 		
-	system ("PAUSE");
-	system("cls");
+//cls aqui y pause
 	//Combate
-	while (vida_rival > 0 || vida_est > 0){
+	while (acabado != 1){
 		
 		//Contador turnos
 		printf("\n----------------------------------------\nTurno %i\n\n", turno);
 		turno++;
 		
+	
 		//Turno estudiante
 		printf("Elige una accion:\n Latigo Cepa<1> , Pistola Agua<2>, Ascuas<3>, Cura<4>\n");
 		scanf("%i", &eleccion);
-		
 		if (eleccion == 1){
 			dano_hecho= multiplicador_tipo(tipo, latigo_cepa[0]) * critico(srand()% 101) * acierto(latigo_cepa[2], srand()% 101, latigo_cepa[1]);
-			printf("Le has quitado %i puntos de vida", dano_hecho);
+			printf("Le has quitado %i puntos de vida\n", dano_hecho);
 			}
 		else if (eleccion == 2){
 			dano_hecho = (multiplicador_tipo(tipo, pistola_agua[0]) * critico(srand()% 101) * acierto(pistola_agua[2], srand()% 101, pistola_agua[1])); 
-			printf("Le has quitado %i puntos de vida", dano_hecho);
+			printf("Le has quitado %i puntos de vida\n", dano_hecho);
 			}
 		else if (eleccion == 3){
 			dano_hecho= multiplicador_tipo(tipo, ascuas[0]) * critico(srand()% 101) * acierto(ascuas[2], srand()% 101, ascuas[1]);
-			printf("Le has quitado %i puntos de vida", dano_hecho);
+			printf("Le has quitado %i puntos de vida\n", dano_hecho);
 		}
 		else if (eleccion == 4){
 			vida_est += 40;
 			printf("Te has curado 40 puntos, tu vida pasa a ser %i\n", vida_est);
+			dano_hecho = 0;
 		}
-		
+		vida_rival -= dano_hecho;
 		printf("La vida del rival pasa a ser %i", vida_rival);
 		//Turno rival
 		
+		if(tipo == 1)
+		dano_hecho = dano_ataque_rival(srand()% 4, misty.atq1[2], misty.atq2[2], misty.atq3[2], misty.atq4[2], srand()% 101, misty.atq1[1], misty.atq2[1], misty.atq3[1], misty.atq4[1], srand()% 101);
+		else if(tipo == 2)
+		dano_hecho = dano_ataque_rival(srand()% 4, ash.atq1[2], ash.atq2[2], ash.atq3[2], ash.atq4[2], srand()% 101, ash.atq1[1], ash.atq2[1], ash.atq3[1], ash.atq4[1], srand()% 101);
+		else if(tipo == 3)
+		dano_hecho = dano_ataque_rival(srand()% 4, brock.atq1[2], brock.atq2[2], brock.atq3[2], brock.atq4[2], srand()% 101, brock.atq1[1], brock.atq2[1], brock.atq3[1], brock.atq4[1], srand()% 101);
 		
-		if(tipo == 1){
-			
-			ataque = srand()% 4 ;
-			
-			if(ataque == 0){
-				
-				
-			}
-			
-			if(ataque == 1){
-			}
-			
-			if(ataque == 2){
-			}
-			
-			if(ataque == 3){
-			}
+		vida_est -= dano_hecho;
+		
+		printf("\n\n\nEl rival te ha hecho %i puntos de dano, tu vida pasa a ser %i\n\n\n\n\n\n\n\n\n\n\n", dano_hecho, vida_est);
+		//cls aqui
+		
+		if(vida_est <= 0)
+		acabado = 1;
+		else if(vida_rival <= 0)
+		acabado = 1;
+		
 		}
-		
-		system("cls");
-		
-	}
-	if(vida_rival == 0)
+	if (vida_rival && vida_est <= 0)
+		printf("Doble KO");
+	else if(vida_rival <= 0)
 		printf("Felicidades has ganado");
-	else
+	else if (vida_est <= 0)
 		printf("Mejor suerte en la proxima");
 }
 
@@ -191,7 +191,7 @@ int critico(int valor_critico){
 	return multiplicador_crit;
 }
 
-int multiplicador_tipo(int tipo_atq, int tipo_rival){
+int multiplicador_tipo(int tipo_rival, int tipo_atq){
 	
 	int multiplicador;
 	
@@ -253,8 +253,28 @@ int multiplicador_tipo(int tipo_atq, int tipo_rival){
 			
 			printf("Es eficaz\n");
 			multiplicador = 1;
-		}
+		}	
+		
 	}
-	
 	return multiplicador;
+
+}
+
+int dano_ataque_rival(int ataque_aleatorio, int prob1, int prob2, int prob3, int prob4, int valor_aleatorio, int ataque1, int ataque2, int ataque3, int ataque4, int valor_critico){
+	
+	int dano_hecho_rival;
+	
+	if(ataque_aleatorio == 0)
+	dano_hecho_rival = acierto(prob1, valor_aleatorio, ataque1) * critico(valor_critico);
+	
+	else if(ataque_aleatorio == 1)
+	dano_hecho_rival = acierto(prob2, valor_aleatorio, ataque2) * critico(valor_critico);
+	
+	else if(ataque_aleatorio == 2)
+	dano_hecho_rival = acierto(prob3, valor_aleatorio, ataque3) * critico(valor_critico);
+	
+	else if(ataque_aleatorio == 3)
+	dano_hecho_rival = acierto(prob4, valor_aleatorio, ataque4) * critico(valor_critico);
+	
+	return dano_hecho_rival;
 }
