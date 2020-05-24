@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
+
 #define N 10
 #define D 30
 #define F 20
@@ -25,7 +26,8 @@ void Puntuaciones(usuario lista_punt[F],FILE *leer);//5
 //CODIGO PRINCIPAL
 void main()
 {
-    empezar:
+    do
+    {
 	system ("PAUSE");    	
     system("cls");
 	char letra;
@@ -78,11 +80,11 @@ void main()
 			   			   			
 	}
     	printf("\n Quieres jugar de nuevo? Pulsa 1:");
-		if(getch()=='1') {
-			system("cls");
-		goto empezar;
-    }
+		//if(getch()=='1') {
+		//	system("cls");
+		}while(getch()=='1');
 }
+
 
 
 

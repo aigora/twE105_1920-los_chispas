@@ -7,6 +7,8 @@
 #define N 10
 #define D 30
 #define F 20
+
+//estructuras 
 typedef struct{
 	char nomb[D];
 }adivinanza;
@@ -16,6 +18,7 @@ typedef struct{
 	int punt;
 }usuario;
 
+//funciones
 int numaleatorio(int n);//1
 void juego(char adivinapalabra[D], char cadena[D]);//2
 int ahorcado(char adivinapalabra[D], char cadena[D]);//3
