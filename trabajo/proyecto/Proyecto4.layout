@@ -10,18 +10,18 @@ TopLine=79
 >>>>>>> 387d6d87a9f20bddbf03cde97d8d4bfcc7986b8e
 LeftChar=1
 [Editor_1]
-CursorCol=1
-CursorRow=15
+CursorCol=12
+CursorRow=21
 TopLine=1
 LeftChar=1
 [Editors]
-Order=0,1,2
+Order=0,1,2,4
 Focused=2
 [Editor_2]
-CursorCol=6
-CursorRow=42
+CursorCol=13
+CursorRow=238
 <<<<<<< HEAD
-TopLine=10
+TopLine=198
 =======
 TopLine=30
 >>>>>>> 387d6d87a9f20bddbf03cde97d8d4bfcc7986b8e
@@ -30,4 +30,9 @@ LeftChar=1
 CursorCol=83
 CursorRow=216
 TopLine=210
+LeftChar=1
+[Editor_4]
+CursorCol=1
+CursorRow=1
+TopLine=1
 LeftChar=1
