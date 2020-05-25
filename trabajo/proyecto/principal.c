@@ -10,15 +10,14 @@ void ahorcado_juego();
 int main()
 {
 	
-	char letra;
+	char opt;
 	do
 	{
-	printf("\tBienvenido a Gameboys\nSelecciona un juego\na)Ahorcado\n");
-	scanf("%c", &letra);
-	switch(letra)
+	printf("\tBienvenido a Gameboys\nSelecciona un juego\n1)Ahorcado\n");
+	scanf(" %c", &opt);
+/*	switch(opt)
 	{
-		case 'a':
-		case 'A':
+		case '1':
 		{
 		 ahorcado_juego();
 		}break;
@@ -26,6 +25,10 @@ int main()
 		default:
 		printf("Error, seleccione opcion valida\n");
 
+	   }*/
+	   if(opt=1)
+	   {
+	   	ahorcado_juego();
 	   }
     } 
 	while(1);
@@ -37,12 +40,15 @@ return 0;
 void ahorcado_juego()
 {
 	int r=0;
+		char letra;
+	int intentos=0, fallos=0;
+	int aleatorio=0;
     do
     {
 printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-	char letra;
-	int intentos=0, fallos=0;
-	int aleatorio=0;
+//	char letra;
+//	int intentos=0, fallos=0;
+//	int aleatorio=0;
 	char letrausuario[D]=" ";
 	 adivinanza peliculas[8]={"MISION IMPOSIBLE", "TOP GUN", "STAR WARS", "INDIANA JONES", "JUMANJI", "LOS VENGADORES", "EL IRLANDES", "HARRY POTTER"};
     adivinanza series[8]={"JUEGO DE TRONOS", "BREAKING BAD", "LA CASA DE PAPEL", "ELITE", "ARROW", "POKEMON", "VIKINGOS", "STRANGER THINGS"};
