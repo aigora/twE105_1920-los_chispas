@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=5
+UnitCount=7
 
 [VersionInfo]
 Major=1
@@ -92,6 +92,26 @@ BuildCmd=
 
 [Unit5]
 FileName=batallalib.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=rayalib.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=rayalib.c
 CompileCpp=1
 Folder=
 Compile=1

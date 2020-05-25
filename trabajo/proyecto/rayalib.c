@@ -1,25 +1,5 @@
-
 #include<stdio.h>
-#include<time.h>
-
-void fun (char tab[3][3]);
-void Prim (char tab[3][3]);
-void dib (char tab[3][3]);
-void Casillas (char tab[3][3]);
-void rival (char tab[3][3]);
-int final (char tab[3][3]);
-
-void main(){
-	
-	printf("            BIENVENIDO AL TRES EN RAYA,PREPARADO?\n\n\n\n");
-	
-	char tab[3][3];
-	
-	fun (tab);
-	
-	system("pause");
-
-}
+#include"rayalib.h"
 
 void fun (char tab[3][3]){
 int i = 0,j;

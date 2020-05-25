@@ -5,11 +5,14 @@
 
 #include "ahorcadolib.h"
 #include "batallalib.h"
+#include "rayalib.h"
+
 
 void ahorcado_juego();
 
 void batalla_juego();
 
+void 3enraya_juego();
 
 int main()
 {
@@ -18,7 +21,7 @@ int main()
 	do
 	{
 
-	printf("\tBienvenido a Gameboys\nSelecciona un juego\na)Ahorcado\nb)Batalla\n");
+	printf("\tBienvenido a Gameboys\nSelecciona un juego\na)Ahorcado\nb)Batalla\nc)3 en raya");
 	scanf("%c", &letra);
 	switch(letra)
 
@@ -33,6 +36,13 @@ int main()
 		case 'B':
 		{
 		 batalla_juego();
+		}break;
+		
+		
+		case 'c':
+		case 'C':
+		{
+		 3enraya_juego();
 		}break;
 		
 		default:
@@ -251,4 +261,19 @@ printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     	printf("\n Quieres jugar de nuevo? Pulsa 1:");
         scanf(" %i", &r);
 		}while(r==1);
+}
+
+void 3enraya_juego(){
+
+
+
+	
+	printf("            BIENVENIDO AL TRES EN RAYA,PREPARADO?\n\n\n\n");
+	
+	char tab[3][3];
+	
+	fun (tab);
+	
+
+
 }
