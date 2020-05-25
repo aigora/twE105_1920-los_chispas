@@ -7,7 +7,10 @@
 #include "batallalib.h"
 
 void ahorcado_juego();
+
 void batalla_juego();
+
+
 int main()
 {
 	
@@ -20,10 +23,12 @@ int main()
 	switch(letra)
 
 	{
-		case '1':
+		case 'a':
+		case 'A':
 		{
 		 ahorcado_juego();
 		}break;
+		
 		case 'b':
 		case 'B':
 		{
@@ -34,11 +39,14 @@ int main()
 		printf("Error, seleccione opcion valida\n");
 
 
-    } 
+    }
+	}	
 	while(1);
 
 return 0;
-}
+	}
+
+
 void batalla_juego()
 {
 	// 0 - Sin tipo, 1 - Agua, 2 - Fuego, 3 - Planta
