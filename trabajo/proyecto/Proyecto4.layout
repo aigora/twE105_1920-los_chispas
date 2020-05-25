@@ -1,11 +1,17 @@
 [Editor_0]
+<<<<<<< HEAD
 CursorCol=1
 CursorRow=11
 TopLine=1
+=======
+CursorCol=2
+CursorRow=135
+TopLine=79
+>>>>>>> 387d6d87a9f20bddbf03cde97d8d4bfcc7986b8e
 LeftChar=1
 [Editor_1]
-CursorCol=12
-CursorRow=21
+CursorCol=1
+CursorRow=15
 TopLine=1
 LeftChar=1
 [Editors]
@@ -14,5 +20,9 @@ Focused=2
 [Editor_2]
 CursorCol=6
 CursorRow=42
+<<<<<<< HEAD
 TopLine=1
+=======
+TopLine=30
+>>>>>>> 387d6d87a9f20bddbf03cde97d8d4bfcc7986b8e
 LeftChar=1
