@@ -1,5 +1,9 @@
 #include<stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <string.h>
 #include"rayalib.h"
+#include "ahorcadolib.h"
 
 void fun (char tab[3][3]){
 int i = 0,j;
@@ -15,7 +19,7 @@ do{
 	}
 	
 	else {
-	rival (tab);
+	enemigo(tab);
 	}
 	j = final (tab);
 	i++;
@@ -28,10 +32,10 @@ while( i<=8 && j == 2);
 	dib (tab);
 
 if(j == 0){
-	printf("¡Enhorabuena, has ganado!\n\n");
+	printf("¡Enhorabuena, has ganado!\n\n\n\n\n\n\n\n");
 }
 else if(j == 1){
-		printf("Lo siento has perdido, pero puedes intentarlo de nuevo ;)\n\n");
+		printf("Lo siento has perdido, pero puedes intentarlo de nuevo ;)\n\n\n\n\n\n\n\n\n\n");
 
 }
 else {
@@ -165,13 +169,13 @@ void Casillas(char tab[3][3]){
 	tab[i][j] = 'X';
 }
 
-void rival (char tab[3][3]){
+void enemigo(char tab[3][3]){
 	int i,j,k;
 
-	srand(time(NULL));
+
 	do {
-		i = rand() %3;
-     	j = rand()%3;
+		i = numaleatorio(3);
+     	j = numaleatorio(3);
 		k = 0;
 		
 		 	if(tab[i][j] == 'X' || tab[i][j] == 'O'){
@@ -275,3 +279,6 @@ if(tab[0][0]== 'X'|| tab[0][0] == 'O'){
  }
  return 2;
 }
+
+
+
