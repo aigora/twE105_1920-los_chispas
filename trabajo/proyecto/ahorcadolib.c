@@ -111,7 +111,7 @@ while(1)
 		t2=clock();
 		tf=(t2-t1)/CLOCKS_PER_SEC;
 		puntuacion=1000000/tf*intentos;
-		printf("Tu puntuacion ha sido de %d y lo has terminado en %f, no esta nada mal...", puntuacion, tf);
+		printf("\nTu puntuacion ha sido de %d y lo has terminado en %f, no esta nada mal...\n", puntuacion, tf);
 		printf("Con que nombre quieres guardar la puntuacion obtenida?\n");
 		scanf(" %s\n", nombre_g);
 			fprintf(agregar, "%s.%i\n", nombre_g, puntuacion);
@@ -126,7 +126,7 @@ while(1)
 	break;
 	printf("\n\tLlevas seleccionadas las siguientes letras: %s\n", usadas);
 	printf("\n\tIntroduce nueva letra\n");
-	scanf(" %d", &nueva_letra);
+	scanf(" %c", &nueva_letra);
 	usadas[i]=nueva_letra;
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	i++;	
@@ -178,7 +178,7 @@ int ahorcado(char adivinapalabra[D], char letrausuario[D])
 int imp_ahorcado(int intentos)
 {
 		if(intentos==7){
-	printf("Te quedan %d intentos\n\n", intentos);
+	printf("\tTe quedan %d intentos\n\n", intentos);
 				printf(" _______\n/        |\n|\n|\n|\n|\n|\n|__\n");	
 	}
 	if(intentos==6){
