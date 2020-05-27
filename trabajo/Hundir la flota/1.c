@@ -8,17 +8,26 @@
 #define nc 10
 
 //Funciones
-int Printmapa1(int mat[nf][nc]); //Imprime mapa inicial con ceros como agua en las casillas
-int mapaCPU[nf][nc]; //Mapa del ordenador
-int mapaAlmirante[nf][nc]; //Mapa del jugador
-int DisparosmapCPU[nf][nc]; //Mapa del rastro de disparos lanzados por la CPU
-int DisparosmapAlm[nf][nc]; //Mapa del rastro de disparos lanzados por el jugador
-int film, columm;
-char casilla[2]; //Casilla del tablero con formato letra + numero (ej: A1)
+int printmapa1(int map[nf][nc]); //Imprime mapa inicial con ceros como agua en las casillas
+int ataqueCPU();
+int ataqueAlm();
+/*
+	int mapaCPU[nf][nc]; //Mapa del ordenador
+		int mapaAlmirante[nf][nc]; //Mapa del jugador
+		int DisparosmapCPU[nf][nc]; //Mapa del rastro de disparos lanzados por la CPU
+		int DisparosmapAlm[nf][nc]; //Mapa del rastro de disparos lanzados por el jugador
+			int film, columm;
 
-
+*/
 void main()
 {
+		int mapaCPU[nf][nc]; //Mapa del ordenador
+		int mapaAlmirante[nf][nc]; //Mapa del jugador
+		int DisparosmapCPU[nf][nc]; //Mapa del rastro de disparos lanzados por la CPU
+		int DisparosmapAlm[nf][nc]; //Mapa del rastro de disparos lanzados por el jugador
+		char casilla[2]; //Casilla del tablero con formato letra + numero (ej: A1)
+		
+		
 	int letra, i, j;
 	printf("Bienvenido a Hundir la flota\n");
 	printf("Para empezar a jugar pulse 1, si desea ver las instrucciones pulse 2\n\n");
@@ -30,16 +39,22 @@ void main()
 				mapaAlmirante[i][j] = 0;
 			}	
 	}	
-	Printmapa1(mapaAlmirante);
+	printmapa1(mapaAlmirante);
 	for (i = 0; i<nf; i++){
 		for (j = 0; j<nc; j++){
 				DisparosmapAlm[i][j] = '*';
 				DisparosmapCPU[i][j] = '*';
 			}	
 	}
+	srand (time(NULL));
+	for(i=5;i>=2;i--){
+			ponerbarcosCPU(i, mapaCPU, i);	//Coloca un portaaviones 
+	}
+
+
 }
 
-int Printmapa1(int mat[nf][nc]) //Imprime una matriz como tablero inicial con casillas determinadas por una letra y un numero (ej: A1)
+int printmapa1(int map[nf][nc]) //Imprime una matriz como tablero inicial con casillas determinadas por una letra y un numero (ej: A1)
 {
     int i;
     
@@ -49,47 +64,47 @@ int Printmapa1(int mat[nf][nc]) //Imprime una matriz como tablero inicial con ca
 		}
 		printf("\n---------------------------------------------\n A |");
 	for(i=0; i<10; i++){
-			printf(" %i |",mat[0][i]);	
+			printf(" %i |",map[0][i]);	
 		}
 		printf("\n---------------------------------------------\n B |");
 	for(i=0; i<10; i++){
-			printf(" %i |",mat[1][i]);
+			printf(" %i |",map[1][i]);
 		} 
 	    printf("\n---------------------------------------------\n C |");
 	for(i=0; i<10; i++){
-			printf(" %i |",mat[2][i]);
+			printf(" %i |",map[2][i]);
 		}	   	
 		printf("\n---------------------------------------------\n D |");
 	for(i=0; i<10; i++){
-			printf(" %i |",mat[3][i]);
+			printf(" %i |",map[3][i]);
 		}
 		printf("\n---------------------------------------------\n E |");
 	for(i=0; i<10; i++){
-			printf(" %i |",mat[4][i]);
+			printf(" %i |",map[4][i]);
 		}
 		printf("\n---------------------------------------------\n F |");
 	for(i=0; i<10; i++){
-			printf(" %i |",mat[5][i]);
+			printf(" %i |",map[5][i]);
 		}    
 		printf("\n---------------------------------------------\n G |");
 	for(i=0; i<10; i++){
-			printf(" %i |",mat[6][i]);
+			printf(" %i |",map[6][i]);
 		}   	
 		printf("\n---------------------------------------------\n H |");
 	for(i=0; i<10; i++) {
-			printf(" %i |",mat[7][i]);
+			printf(" %i |",map[7][i]);
 		}
 		printf("\n---------------------------------------------\n I |");
 	for(i=0; i<10; i++){
-			printf(" %i |",mat[8][i]);
+			printf(" %i |",map[8][i]);
 		}
 	   	printf("\n---------------------------------------------\n J |");	
 	for(i=0; i<10; i++){
-			printf(" %i |",mat[9][i]);
+			printf(" %i |",map[9][i]);
 		}  
 	    printf("\n---------------------------------------------\n");
 }
-int BarcosAlm(int mapaAlmirante[nf][nc]){
+int barcosAlm(int mapaAlmirante[nf][nc]){
 	char casilla1, casilla2;
 	printf("Almirante decida el primer punto donde va a colocar su portaviones de 5 casillas");
 	scanf("%c", &casilla1);
@@ -98,8 +113,9 @@ int BarcosAlm(int mapaAlmirante[nf][nc]){
 	
 		
 }
-int infcasilla(char casilla[2]) //Comprueba si el formato de casilla introducio es válido
+int infcasilla(char casilla[2]) //Comprueba si el formato de casilla introducio es válido y asigna unos valores a la coordenada introducida
 {
+	int film, columm;
 	if((casilla[0]>='a' && casilla[0]<='j') || (casilla[0]>='A' && casilla[0]<='J')) //Asigna a la letra de la casilla a una fila
 		{
 		if(casilla[0]>='a' && casilla[0]<='j')
@@ -121,13 +137,19 @@ int infcasilla(char casilla[2]) //Comprueba si el formato de casilla introducio 
 		else
 				return 0;
 }
-int boom( ) //Disparos del jugador
+int ataqueAlm() //Disparos del jugador
 {
+	int mapaCPU[nf][nc]; //Mapa del ordenador
+	int mapaAlmirante[nf][nc]; //Mapa del jugador
+	int DisparosmapCPU[nf][nc]; //Mapa del rastro de disparos lanzados por la CPU
+	int DisparosmapAlm[nf][nc]; //Mapa del rastro de disparos lanzados por el jugador
 	int dispara = 0;
 	char casilladp[2];
+	int film, columm;
+
 	
 	while(dispara==0)
-	{
+	{	
 		printf("Almirante decida la casilla a la que va a disparar: \n");
 		scanf(" %c", &casilladp);
 		infcasilla( casilladp);
@@ -177,14 +199,18 @@ int boom( ) //Disparos del jugador
 		}
 	}
 }
-int boomenmicara( ) //Disparos de la CPU
+int ataqueCPU() //Disparos de la CPU
 {
+	int mapaCPU[nf][nc]; //Mapa del ordenador
+	int mapaAlmirante[nf][nc]; //Mapa del jugador
+	int DisparosmapCPU[nf][nc]; //Mapa del rastro de disparos lanzados por la CPU
+	int DisparosmapAlm[nf][nc]; //Mapa del rastro de disparos lanzados por el jugador
 	int film, columm;
 	int dispara = 0;
 	while(dispara==0)
 	{
-		film = rand() % (nf+1); //fila random a la que disparo
-		columm = rand() % (nc+1); //columa random a la que dispara
+		film = rand() % (nf); //fila random a la que disparo
+		columm = rand() % (nc); //columa random a la que dispara
 			if (mapaCPU[film][columm] == '*'){ //comprueba si anteriormente habia disparado en esa posicion
 				if (DisparosmapAlm[film][columm] == 0) //Cuando toca agua se sabra porque la casilla es 0
 				{
@@ -224,6 +250,138 @@ int boomenmicara( ) //Disparos de la CPU
 					}
 				}
 			}
+	}	
+}
+//coloca los barcos según la primera fila y columna introducidas y su última fila y colummna, la clase viene definida por un numero que señala que barco es
+int ponerbarcosAlm(int fila1, int fila2, int columna1, int columna2, int mapa[nf][nc], int longitud)
+{
+	int repetido=0;
+	int i, l;
+	int clase = 0;
+	if(fila1==fila2){
+		if(columna1<columna2 && columna1<= nc && columna2<= nc){
+			columna2-columna1 == l;
+			for(i=columna1;i<=columna2;i++){
+				if(mapa[fila1][i]!=0)
+					repetido++;
+			}
+			if(repetido==0){
+				for(i=columna1;i<=columna2;i++)  
+	    				mapa[fila1][i]= l;
+	      			clase++;
+	      			return clase;
+			}
+		}
+		if(columna1 > columna2 && columna1<= nc && columna2 <= nc){
+			columna1-columna2 == l;
+			for(i=columna1;i>=columna2;i--){
+					if(mapa[fila1][i]!=0)
+						repetido++;
+			}
+			if(repetido==0){
+				for(i=columna1;i>=columna2;i--)
+	    				mapa[fila1][i]= l;
+	      			clase++;
+	      			return clase;
+			}
+		}
+	}
+	if(columna1 == columna2){
+		if(fila1<fila2 && fila1<= nc && fila2<= nc){
+			fila2-fila1 == l;
+			for(i=fila1;i<=fila2;i++){
+				if(	mapa[i][columna1]!=0)
+					repetido++;
+			}
+			if(repetido==0){
+				for(i=fila1;i<=fila2;i++)  
+	    				mapa[i][columna1]= l;
+	      			clase++;
+	      			return clase;
+			}
+		}
+		if(fila1 > fila2 && fila1<= nc && fila2 <= nc){
+			fila1-fila2 == l;
+			for(i=fila1;i>=fila2;i--){
+					if(	mapa[i][columna1]!=0)
+						repetido++;
+			}
+			if(repetido==0){
+				for(i=fila1;i>=fila2;i--)  
+	    				mapa[i][columna1]= l;
+	      			clase++;
+	      			return clase;
+			}
+		}
+	}
+}
+int ponerbarcosCPU(int tipo, int mapa[nf][nc], int longitud)
+{
+	int fila, columna;
+	int repetido, vacio=0;
+	int i, l, dir; //l es la longitud de los barcos y dir la direccción que utilizaremos ahora
+	while(vacio==0)
+	{
+		fila = rand() % (nf); 
+		columna = rand() % (nc);
+		dir = rand() % (4);
+		repetido=0;
+		
+		if(dir==0)							
+	  		if(fila+1 >= l)				//Comprueba que cabe un barco arriba de la casilla generada
+	  		{ 
+				for(i=fila;i>=(fila-l+1);i--)  	      	
+		      		if(mapa[i][columna]!=0)	    		
+		    			repetido++;					      	
+		    	if(repetido==0)
+		   		{
+	  	  			for(i=fila;i>=(fila-l+1);i--)  
+		      			mapa[i][columna]=tipo;
+		      		vacio++;
+		   		}
+			}
+			
+		if(dir==1)							
+		if(columna+l <= nf)					//Comprueba que cabe un barco a la derecha de la casilla generada
+  		{ 
+	 		for(i=columna;i<=(columna+l-1);i++)  	      	
+	      		if(mapa[fila][i]!=0)	    	
+	    			repetido++;					      	
+	   		if(repetido == 0)
+	   		{
+  	  			for(i=columna;i<=(columna+l-1);i++)  	      		
+	    			mapa[fila][i]=tipo;	      		
+	   			vacio++;
+	    	}
+		}
+		
+		if(dir==2)							
+	  		if(fila+l <= nf)				//Comprueba que cabe un barco abajo de la casilla generada
+	  		{ 
+				for(i=fila;i<=(fila+l-1);i--)  	      	
+		      		if(mapa[i][columna]!=0)	    		
+		    			repetido++;					      	
+		    	if(repetido==0)
+		   		{
+	  	  			for(i=fila;i<=(fila+l-1);i--)
+		      			mapa[i][columna]=tipo;
+		      		vacio++;
+		   		}
+			}
+		
+		if(dir==3)							
+		if(columna+1 >= l)					//Comprueba que cabe un barco a la izquierda de la casilla generada
+  		{ 
+	 		for(i=columna;i>=(columna-l+1);i++)  	      	
+	      		if(mapa[fila][i]!=0)	    	
+	    			repetido++;					      	
+	   		if(repetido == 0)
+	   		{
+  	  			for(i=columna;i>=(columna-l+1);i++)      		
+	    			mapa[fila][i]=tipo;	      		
+	   			vacio++;
+	    	}
+		}	
 	}
 }
 
