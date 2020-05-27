@@ -5,10 +5,14 @@
 
 #include "ahorcadolib.h"
 #include "batallalib.h"
+#include "rayalib.h"
+
 
 void ahorcado_juego();
 
 void batalla_juego();
+
+void tresenraya_juego();
 
 
 int main()
@@ -18,8 +22,8 @@ int main()
 	do
 	{
 
-	printf("\tBienvenido a Gameboys\nSelecciona un juego\na)Ahorcado\nb)Batalla\n");
-	scanf("%c", &letra);
+	printf("\tBienvenido a Gameboys\nSelecciona un juego\na)Ahorcado\nb)Batalla\nc)3 en raya\n");
+	scanf(" %c", &letra);
 	switch(letra)
 
 	{
@@ -33,6 +37,13 @@ int main()
 		case 'B':
 		{
 		 batalla_juego();
+		}break;
+		
+		
+		case 'c':
+		case 'C':
+		{
+		 tresenraya_juego();
 		}break;
 		
 		default:
@@ -60,7 +71,7 @@ void batalla_juego()
 	int eleccion = 4;
 	int dano_recibido;
 	
-	//Ataques rivales
+	//Ataques enemigoes
 
 	int lanzallamas[3] = {2, 55, 50}, llamarada[3] = {2, 75, 33}, placaje[3] = {0, 25, 90};
 	int esporas[3] = {3, 55, 50}, planta_feroz[3] = {3, 75, 33};
@@ -195,7 +206,7 @@ void batalla_juego()
 void ahorcado_juego()
 {
 	int r=0;
-		char letra;
+		char chaz;
 	int intentos=0, fallos=0;
 	int aleatorio=0;
     do
@@ -214,9 +225,9 @@ printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"); 
 	printf("Bien, comencemos!!!!\n");
 	printf("Selecciona categoria:\n\ta)Peliculas\n\tb)Series\n\tc)Equipos Futbol\n");
-   scanf(" %c", &letra);
+   scanf(" %c", &chaz);
 
-	switch (letra)
+	switch (chaz)
     {
        		case 'a':
 			case 'A':
@@ -249,6 +260,22 @@ printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 			   			   			
 	}
     	printf("\n Quieres jugar de nuevo? Pulsa 1:");
-        scanf(" %i", &r);
+        scanf("%i", &r);
 		}while(r==1);
 }
+
+void tresenraya_juego(){
+
+
+
+	
+	printf("            BIENVENIDO AL TRES EN RAYA,PREPARADO?\n\n\n\n");
+	
+	char tab[3][3];
+	
+	fun (tab);
+	
+
+
+}
+
