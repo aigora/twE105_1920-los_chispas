@@ -26,11 +26,14 @@ void Puntuaciones(usuario lista_punt[F],FILE *leer);//5
 //CODIGO PRINCIPAL
 void main()
 {
+	int r=0;
     do
     {
-	system ("PAUSE");    	
-    system("cls");
+//	system ("PAUSE");    	
+  //  system("cls");
+      printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	char letra;
+	
 	int intentos=0, fallos=0;
 	int aleatorio=0;
 	char letrausuario[D]=" ";
@@ -38,11 +41,13 @@ void main()
     adivinanza series[8]={"JUEGO DE TRONOS", "BREAKING BAD", "LA CASA DE PAPEL", "ELITE", "ARROW", "POKEMON", "VIKINGOS", "STRANGER THINGS"};
 	adivinanza teams[8]={"REAL MADRID", "ATLETICO DE MADRID", "BARCELONA", "LIVERPOOL", "WATFORD", "GENK", "RIVER", "BBOCA JUNIORS"};
 	printf("\tBienvenidos al Ahorcado !!!!!\n");
-		system ("PAUSE");
-			system("CLS");
+	//	system ("PAUSE");
+	//		system("CLS");
+	    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	printf("\tEstamos listos??\n");
-		system ("PAUSE");
-			system("CLS");
+	//	system ("PAUSE");
+	//		system("CLS");
+	    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	printf("Bien, comencemos!!!!\n");
 	printf("Selecciona categoria:\n\ta)Peliculas\n\tb)Series\n\tc)Equipos Futbol\n");
    scanf(" %c", &letra);
@@ -51,7 +56,8 @@ void main()
     {
        		case 'a':
 			case 'A':
-				system("CLS");
+				//system("CLS");
+				    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				printf("Has elegido la categoria de Peliculas\n");
 				aleatorio = numaleatorio(8)-1;
 				juego(peliculas[aleatorio].nomb, letrausuario);
@@ -59,7 +65,8 @@ void main()
 	           
        		case 'b':
 			case 'B':
-				system("CLS");
+				//system("CLS");
+				    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				printf("Has elegido la categoria de Series\n");
 				aleatorio = numaleatorio(8)-1;
 				juego(series[aleatorio].nomb, letrausuario);
@@ -67,7 +74,8 @@ void main()
 	           
        		case 'c':
 			case 'C':
-				system("CLS");
+				//system("CLS");
+				    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 				printf("Has elegido la categoria de Equipos de Futbol\n");
 				aleatorio = numaleatorio(8)-1;
 				juego(teams[aleatorio].nomb, letrausuario);
@@ -76,13 +84,14 @@ void main()
 
 			default:
 			printf("Error, seleccione opcion valida\n");
-			system ("PAUSE");  
+			//system ("PAUSE");  
 			   			   			
 	}
     	printf("\n Quieres jugar de nuevo? Pulsa 1:");
 		//if(getch()=='1') {
 		//	system("cls");
-		}while(getch()=='1');
+		scanf("%i", &r);
+		}while(r==1);// while(getch()=='1');
 }
 
 
@@ -101,7 +110,7 @@ int i;
 
 void juego(char adivinapalabra[D], char usadas[D])
 {int errores=0, intentos=7, puntuacion, perder, i=0;
- char nombre_g[D]="";
+ char nombre_g[D]="", nueva_letra;
  float t1 =clock(), t2, tf;
  usuario lista_puntuaciones[F]={{"iniciar",0}};
  FILE *agregar=fopen("puntuacion_ahorcado.txt","a");
@@ -118,7 +127,7 @@ while(1)
 		t2=clock();
 		tf=(t2-t1)/CLOCKS_PER_SEC;
 		puntuacion=1000000/tf*intentos;
-		printf("Tu puntuacion ha sido de %d y lo has terminado en %f, no esta nada mal...", puntuacion, tf);
+		printf("\nTu puntuacion ha sido de %d y lo has terminado en %f, no esta nada mal...\n", puntuacion, tf);
 		printf("Con que nombre quieres guardar la puntuacion obtenida?\n");
 		scanf(" %s\n", nombre_g);
 			fprintf(agregar, "%s.%i\n", nombre_g, puntuacion);
@@ -133,8 +142,10 @@ while(1)
 	break;
 	printf("\n\tLlevas seleccionadas las siguientes letras: %s\n", usadas);
 	printf("\n\tIntroduce nueva letra\n");
-	usadas[i]=getch();
-	system("cls");
+	scanf(" %c", &nueva_letra);
+	usadas[i]=nueva_letra;//getch();
+	//system("cls");
+	    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	i++;	
 }
 
@@ -237,7 +248,8 @@ void Puntuaciones(usuario lista_punt[F],FILE *leer_archivo)
 				lista_punt[i]=lista_punt[a];
 				lista_punt[a]=aux;
 			}
-    system("cls");
+    //system("cls");
+        printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("\t   Nombre \t Puntuacion");
 		for(i=0;lista_punt[i].punt!=0&&i<10;i++)
 			printf("\n\t%i- %s \t %i",i+1,lista_punt[i].nombre,lista_punt[i].punt);    
