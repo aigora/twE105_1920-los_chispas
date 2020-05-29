@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = ahorcadolib.o principal.o batallalib.o rayalib.o
-LINKOBJ  = ahorcadolib.o principal.o batallalib.o rayalib.o
+OBJ      = ahorcadolib.o principal.o batallalib.o rayalib.o hundirlaflotalib.o
+LINKOBJ  = ahorcadolib.o principal.o batallalib.o rayalib.o hundirlaflotalib.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -35,3 +35,6 @@ batallalib.o: batallalib.c
 
 rayalib.o: rayalib.c
 	$(CPP) -c rayalib.c -o rayalib.o $(CXXFLAGS)
+
+hundirlaflotalib.o: hundirlaflotalib.c
+	$(CPP) -c hundirlaflotalib.c -o hundirlaflotalib.o $(CXXFLAGS)
